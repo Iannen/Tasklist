@@ -1,0 +1,7 @@
+services:
+  tasklist:
+    image: iannen/tasklist:latest
+    container_name: tasklist
+    ports:
+      - "16501:8080"
+    restart: unless-stopped
