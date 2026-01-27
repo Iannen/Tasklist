@@ -1,10 +1,15 @@
-URL to application:
-http://127.0.0.1:8080/TaskList/
-Observe that currently there is no content in the component. You must
-create the code of the component.
+# TaskList
 
-URL to demo:
-http://127.0.0.1:8080/TaskList/demo/index.html
+## Background
 
-URL to the in-memory database of the application:
-http://localhost:8080/TaskList/h2-console
+This project was [an ungraded obligatory assignment](pdflink) at Western Norway University of Applied Sciences (HVL) for the course 'DAT152 Advanced Web Applications'
+
+It was developed as a collaborative effort of group 11 in the spring of 2024, group member initials are NL, OMA, MA, RM, TS, CH and ØS
+
+## The App
+
+The application consists of a non-rest compliant Spring boot backend with a PostgreSQL database, and a custom built web components like frontend.
+
+
+
+[demo](http://tasklist.kaffannen.click:16501/TaskList/)
