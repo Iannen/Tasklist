@@ -8,7 +8,7 @@ It was developed as a collaborative effort of group 11 in the fall of 2025
 
 ## The App
 
-The application is a simple tasklist that allows users to register tasks and manage statuses of tasks. 
-It is basen on a scaffolded project, our job was to create the javascript web components frontend only.
+The application is a simple tasklist that allows users to register tasks and manage statuses of tasks.  
+It was based on a scaffolded project, our job was to create the javascript web components frontend only.
 
 [demo](http://tasklist.kaffannen.click:16501/TaskList/)
