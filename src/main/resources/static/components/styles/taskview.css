@@ -1,0 +1,281 @@
+/* TaskView Main Styles */
+:host {
+    display: block;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    /* CSS Custom Properties (Variables) */
+    --primary-gradient-start: #667eea;
+    --primary-gradient-end: #764ba2;
+    --text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    --bg-overlay-opacity: 0.1;
+    --btn-bg: white;
+    --btn-color: #667eea;
+    --btn-hover-bg: #f8f9fa;
+    --btn-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    --btn-shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.3);
+    --card-bg: white;
+    --card-border-radius: 15px;
+    --card-padding: 2rem;
+    --card-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    
+    background: linear-gradient(135deg, var(--primary-gradient-start) 0%, var(--primary-gradient-end) 100%);
+    min-height: 100vh;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+/* BEM Block: task-view */
+.task-view__header {
+    color: white;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-shadow: var(--text-shadow);
+    letter-spacing: 1px;
+}
+
+.task-view__message {
+    color: white;
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, var(--bg-overlay-opacity));
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+}
+
+.task-view__new-task-btn {
+    display: block;
+    margin: 0 auto 2rem;
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+    background: var(--btn-bg);
+    color: var(--btn-color);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--btn-shadow);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.task-view__new-task-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: var(--btn-shadow-hover);
+    background: var(--btn-hover-bg);
+}
+
+.task-view__new-task-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.task-view__new-task-btn:disabled {
+    background: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.6);
+    cursor: not-allowed;
+}
+
+.task-view__task-list {
+    background: var(--card-bg);
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    box-shadow: var(--card-shadow);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.task-view__task-list[style*="display: none"] {
+    display: block !important;
+}
+
+/* BEM Block: task-list (nested in task-view) */
+.task-list__table {
+    width: 100%;
+}
+
+.task-list__thead {
+    background: linear-gradient(135deg, var(--primary-gradient-start) 0%, var(--primary-gradient-end) 100%);
+    color: white;
+}
+
+.task-list__th {
+    padding: 1.2rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.task-list__tbody {
+    transition: all 0.2s ease;
+    border-bottom: 1px solid #e8ecef;
+}
+
+.task-list__tbody-row:hover {
+    background-color: #f8f9fa;
+    transform: scale(1.01);
+}
+
+.task-list__tbody-row:last-child {
+    border-bottom: none;
+}
+
+.task-list__td {
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+/* BEM Block: task-box (nested in task-view) */
+.task-box__dialog {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    max-width: 450px;
+    width: 90%;
+    margin: auto;
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+.task-box__dialog::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+}
+
+.task-box__close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    color: #adb5bd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    line-height: 1;
+    background: transparent;
+    border: none;
+    padding: 0.3rem;
+}
+
+.task-box__close-btn:hover {
+    color: #6c757d;
+    transform: rotate(90deg);
+}
+
+/* Modal header styling */
+.task-box__header-row {
+    margin-bottom: 1.5rem;
+}
+
+.task-box__label {
+    font-size: 0.9rem;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.3rem;
+}
+
+.task-box__input-row {
+    width: 100%;
+    padding: 0.8rem 0;
+}
+
+.task-box__input {
+    font-size: 1.4rem;
+    color: #333;
+    border: none;
+    background: transparent;
+    width: 100%;
+    padding: 0.8rem 0;
+}
+
+.task-box__input::placeholder {
+    color: #adb5bd;
+}
+
+.task-box__status-row {
+    margin-top: 1rem;
+}
+
+.task-box__status-select {
+    flex: 1;
+    padding: 0.7rem 1rem;
+    border: 2px solid #e8ecef;
+    border-radius: 8px;
+    background: white;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.task-box__status-select:hover {
+    border-color: #667eea;
+}
+
+.task-box__status-select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+/* Button styling */
+.task-box__actions-row {
+    margin-top: 1.5rem;
+}
+
+.task-box__submit-btn {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    background: linear-gradient(135deg, var(--primary-gradient-start) 0%, var(--primary-gradient-end) 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.task-box__submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+    background: linear-gradient(135deg, var(--primary-gradient-end) 0%, var(--primary-gradient-start) 100%);
+}
+
+.task-box__submit-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.task-box__submit-btn:disabled {
+    background: rgba(102, 126, 234, 0.3);
+    color: rgba(255, 255, 255, 0.6);
+    cursor: not-allowed;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    :host {
+        padding: 1rem;
+    }
+    
+    .task-view__header {
+        font-size: 2rem;
+    }
+    
+    .task-view__task-list {
+        padding: 1.5rem;
+    }
+}
+
+/* Focus visible for accessibility */
+.task-view *:focus-visible {
+    outline: 3px solid var(--primary-gradient-start);
+    outline-offset: 2px;
+}

@@ -1,29 +1,144 @@
+/* TaskList Table Styles */
+#tasklist {
+    width: 100%;
+}
+
 table {
-    border-collapse: collapse;
-    white-space: nowrap;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-thead,
-tbody {
-    border-bottom: 2px solid black;
+thead {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
 }
 
-th:first-child,
-td:first-child {
-    padding-left: 0px;
-}
-
-th,
-td {
-    padding-left: 20px;
+th {
+    padding: 1.2rem 1rem;
     text-align: left;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
 }
 
-tr:first-child>th,
-tr:first-child>td {
-    padding-top: 0px;
+tbody tr {
+    transition: all 0.2s ease;
+    border-bottom: 1px solid #e8ecef;
 }
 
+tbody tr:hover {
+    background-color: #f8f9fa;
+    transform: scale(1.01);
+}
+
+tbody tr:last-child {
+    border-bottom: none;
+}
+
+td {
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+/* Status column styling */
 select {
-    margin: 5px 0 5px 0;
+    padding: 0.5rem 1rem;
+    border: 2px solid #e8ecef;
+    border-radius: 8px;
+    background: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 140px;
+}
+
+select:hover {
+    border-color: #667eea;
+}
+
+select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+/* Custom status colors - using data-attributes for better maintainability */
+tr[data-status="WAITING"] td.status-cell,
+select[value="WAITING"] {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+tr[data-status="IN_PROGRESS"] td.status-cell,
+select[value="IN_PROGRESS"] {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+tr[data-status="COMPLETED"] td.status-cell,
+select[value="COMPLETED"] {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+tr[data-status="CANCELLED"] td.status-cell,
+select[value="CANCELLED"] {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Remove button styling */
+button[type="button"] {
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(255, 107, 107, 0.3);
+}
+
+button[type="button"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+button[type="button"]:active {
+    transform: translateY(0);
+}
+
+/* Empty state */
+#tasklist:empty ~ #table,
+#tasklist:not(:has(#table)) {
+    text-align: center;
+    padding: 3rem !important;
+    color: #6c757d;
+    font-size: 1.2rem;
+}
+
+/* Responsive table */
+@media (max-width: 768px) {
+    th, td {
+        padding: 0.8rem 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    select, button[type="button"] {
+        min-width: 120px;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* Loading state */
+#tasklist[style*="display: none"]:not([style*="display: block"]) {
+    display: block !important;
 }
